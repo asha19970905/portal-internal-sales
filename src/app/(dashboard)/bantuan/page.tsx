@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { PrismaClient } from '@prisma/client'
 import BantuanClient from './BantuanClient'
 import { getServerSession } from 'next-auth'

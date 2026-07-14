@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { PrismaClient } from '@prisma/client'
 import styles from './page.module.css'
 import { PoChart, ClaimChart } from '@/components/DashboardCharts'

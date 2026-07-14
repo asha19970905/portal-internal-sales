@@ -1,0 +1,73 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   // "ADMIN" | "USER"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PO {
+  id               String   @id @default(uuid())
+  no               String
+  tanggalPo        DateTime
+  pic              String
+  namaCustomer     String
+  sbr              String
+  noQt2            String
+  jumlahItem       Int
+  tanggalInput     DateTime
+  jam              String
+  tanggalTerimaPop DateTime?
+  jamTerima        String?
+  noSo             String?
+  status           String   @default("Masuk") // "Masuk" | "Proses" | "Selesai"
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model ClaimMemo {
+  id           String   @id @default(uuid())
+  no           String
+  tanggal      DateTime
+  noClaim      String
+  customer     String
+  noSppb       String
+  spec         String
+  diameter     Float
+  tebal        Float
+  panjang      Float
+  qtySppb      Int
+  qtyClaim     Int
+  jenisClaim   String
+  disposisi    String
+  keterangan   String   @default("Open") // "Open" | "Close"
+  remarks      String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model VideoTutorial {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  videoUrl    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AppSetting {
+  id    String @id @default(uuid())
+  key   String @unique
+  value String
+}
